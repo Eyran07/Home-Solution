@@ -1,8 +1,16 @@
-import { Text } from '@chakra-ui/react'
-const Home =() => {
-    return (
-        <Text>Home Solution Energy</Text>
-    )
-}
+import React from 'react';
+import { Text, Link, Button } from "@chakra-ui/react";
+import { Link as ReactRouterLink } from 'react-router-dom'
 
-export default Home 
+const Home = () => {
+
+  return (
+    <>
+      <Text>Home Solution Energy</Text>
+      <Button>
+      <Link as={ReactRouterLink} to={'/client-info'} >Start the process</Link></Button>
+    </>
+  )
+};
+
+export default Home;

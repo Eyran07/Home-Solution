@@ -1,12 +1,20 @@
-import { extendTheme, Button } from "@chakra-ui/react";
+import { extendTheme } from "@chakra-ui/react";
 
 const mainTheme = extendTheme({
-  // rest of your theme configuration
+  styles: {
+    Link: {
+      baseStyle: {
+         '&:hover': {
+            textDecoration: 'none',
+         },
+      },
+   },
+  },
   breakpoints: {
-    sm: "22.563em", // 360px
-    md: "30em", // 480px
-    lg: "90.5em", // 1440px
-    xl: "120em", // 1920px
+    sm: "22.563em", // 360px suitable for iphone
+    md: "30em", // 480px suitable for iphone pro max
+    lg: "64em", // 1024px, suitable for iPads
+    xl: "120em", // 1920px suitable for mac 14'
   },
 });
 
