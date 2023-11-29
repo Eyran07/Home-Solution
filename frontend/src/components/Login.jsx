@@ -22,7 +22,9 @@ const PasswordPrompt = ({ onPasswordSubmit }) => {
       .post("http://localhost:6060/login", formData)
       .then((response) => {
         console.log(response);
-        localStorage.setItem("token", response.data.token); // Stockez le token dans le localStorage
+        console.log("API Response:", response.data);
+        localStorage.setItem("token", response.data.token);
+        localStorage.setItem("admin", response.data.admin); 
         onPasswordSubmit(response.data.token);
         navigate("/");
         window.location.reload(false);
