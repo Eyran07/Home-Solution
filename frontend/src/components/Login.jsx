@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Box, Input, Button, Text, VStack, Image } from "@chakra-ui/react";
+import { Box, Input, Button, VStack, Image, Text } from "@chakra-ui/react";
 import axios from "axios";
-import logo from "../assets/logo.jpg";
+// import backgroundImage from "../assets/your-background-image.jpg"; // Replace with the path to your background image
+import logo from "../assets/logo.jpg"; // Make sure this is the logo you want to use
 import { useNavigate } from "react-router-dom";
 
 const PasswordPrompt = ({ onPasswordSubmit }) => {
@@ -42,35 +43,51 @@ const PasswordPrompt = ({ onPasswordSubmit }) => {
       alignItems="center"
       justifyContent="center"
       height="100vh"
+      // bgImage={`url(${backgroundImage})`}
+      bgPosition="center"
+      bgRepeat="no-repeat"
+      bgSize="cover"
     >
       <VStack
         spacing={4}
         p={8}
-        bg="white"
-        boxShadow="lg"
-        borderRadius="md"
-        border="1px"
+        bg="transparent" // Changed to transparent to match your design
+        boxShadow="none" // Remove box shadow to match your design
       >
-        <Image src={logo} boxSize="100px" alt="Logo" mb={4} />
+        <Image src={logo} boxSize="150px" alt="Logo" />
 
-        <Input
-          placeholder="Prénom"
-          type="text"
-          name="name"
-          value={formData.name}
-          onChange={handleChange}
-          size="md"
-        />
-        <Input
-          placeholder="Mot de passe"
-          type="password"
-          name="password"
-          value={formData.password}
-          onChange={handleChange}
-          size="md"
-        />
+        <Box position="relative" height="50px" width="300px"> {/* Adjust size as needed */}
+          <Input
+            placeholder="Identifiant"
+            type="text"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            size="lg" // Increase size to match design
+            bg="white" // White background for input
+            border="none" // No border
+            borderRadius="0" // Remove border radius to match design
+          />
+          <Text position="absolute" left="0" top="-20px" color="white">Identifiant</Text>
+        </Box>
+
+        <Box position="relative" height="50px" width="300px"> {/* Adjust size as needed */}
+          <Input
+            placeholder="Mot de passe"
+            type="password"
+            name="password"
+            value={formData.password}
+            onChange={handleChange}
+            size="lg" // Increase size to match design
+            bg="white" // White background for input
+            border="none" // No border
+            borderRadius="0" // Remove border radius to match design
+          />
+          <Text position="absolute" left="0" top="-20px" color="white">Mot de passe</Text>
+        </Box>
+
         <Button colorScheme="blue" onClick={handleSubmit} width="full">
-          Soumettre
+          Connexion
         </Button>
       </VStack>
     </Box>

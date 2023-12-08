@@ -1,16 +1,40 @@
 import React from 'react';
-import { Text, Link, Button } from "@chakra-ui/react";
-import { Link as ReactRouterLink } from 'react-router-dom'
+import { Box, Button, Text, Image, Link } from "@chakra-ui/react";
+// import backgroundImage from "../assets/your-background-image.jpg"; // Replace with the path to your background image
+import logo from "../assets/logo.jpg"; // Replace with the path to your actual logo image
+// import book from "../assets/book.pdf"; // Replace with the path to your book file
 
 const Home = () => {
-
   return (
-    <>
-      <Text>Home Solution Energy</Text>
-      <Button>
-      <Link as={ReactRouterLink} to={'/client-info'} >Start the process</Link></Button>
-    </>
-  )
+    <Box
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+      justifyContent="center"
+      height="100vh"
+      // bgImage={`url(${backgroundImage})`}
+      bgPosition="center"
+      bgRepeat="no-repeat"
+      bgSize="cover"
+    >
+      <Image src={logo} boxSize="150px" alt="Logo" /> {/* Adjust size as needed */}
+      <Text fontSize="3xl" color="white" mt="20px">Home Solution Energy</Text>
+
+      {/* Button for starting the configuration process */}
+      <Button mt={'15px'} colorScheme="blue">
+        <Link href='/client-info'>
+          Commencer à configurer
+        </Link>
+      </Button>
+
+      {/* Button for downloading the book */}
+      <Button mt={'15px'} colorScheme="blue">
+        {/* <Link href={book} isExternal download>
+          Télécharger le Book
+        </Link> */}
+      </Button>
+    </Box>
+  );
 };
 
 export default Home;
