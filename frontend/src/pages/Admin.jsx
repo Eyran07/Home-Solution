@@ -33,7 +33,7 @@ const Admin = () => {
 
   const fetchUsers = () => {
     axios
-      .get("http://localhost:6060/users")
+      .get(`${process.env.REACT_APP_SERVER_URL}/users`)
       .then((response) => {
         setUsers(response.data);
       })
@@ -58,7 +58,7 @@ const Admin = () => {
   const saveEdit = (deleteUser = false) => {
     if (deleteUser) {
       axios
-        .delete(`http://localhost:6060/users/${editingUserId}`)
+        .delete(`${process.env.REACT_APP_SERVER_URL}/users/${editingUserId}`)
         .then((response) => {
           fetchUsers();
           cancelEdit();
@@ -68,7 +68,7 @@ const Admin = () => {
         });
     } else {
       axios
-        .put(`http://localhost:6060/users/${editingUserId}`, editedUser)
+        .put(`${process.env.REACT_APP_SERVER_URL}/users/${editingUserId}`, editedUser)
         .then((response) => {
           fetchUsers();
           cancelEdit();
@@ -82,7 +82,7 @@ const Admin = () => {
   const saveNewUser = () => {
     // Envoyer la requête POST pour créer le nouvel utilisateur
     axios
-      .post("http://localhost:6060/users", newUser)
+      .post(`${process.env.REACT_APP_SERVER_URL}/users`, newUser)
       .then((response) => {
         fetchUsers();
         setAddingNew(false);
@@ -95,7 +95,7 @@ const Admin = () => {
 
   const deleteUser = (userId) => {
     axios
-      .delete(`http://localhost:6060/users/${userId}`)
+      .delete(`${process.env.REACT_APP_SERVER_URL}/users/${userId}`)
       .then((response) => {
         fetchUsers(); // Recharger la liste des utilisateurs après la suppression
       })
