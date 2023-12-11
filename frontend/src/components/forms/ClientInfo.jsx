@@ -32,6 +32,8 @@ const ClientInfo = ({ onSubmit }) => {
 
   const [value, setValue] = React.useState("1");
 
+  //test
+
   const handleOccupationChange = (nextValue) => {
     setFormData((prevFormData) => ({
       ...prevFormData,
