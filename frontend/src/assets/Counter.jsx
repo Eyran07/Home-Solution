@@ -3,23 +3,19 @@ import React, { useState } from 'react';
 
 const Counter = ({ onCountChange }) => {
    const [count, setCount] = useState(1);
-
+ 
    const handleClickMinus = () => {
-      if (count > 1) {
-         const newCount = count - 1;
-         setCount(newCount);
-         if (onCountChange) {
-           onCountChange(newCount);
-         }
-      }
+     if (count > 1) {
+       const newCount = count - 1;
+       setCount(newCount);
+       onCountChange(newCount);
+     }
    };
-
+ 
    const handleClickPlus = () => {
-      const newCount = count + 1;
-      setCount(newCount);
-      if (onCountChange) {
-        onCountChange(newCount);
-      }
+     const newCount = count + 1;
+     setCount(newCount);
+     onCountChange(newCount);
    };
 
    return (

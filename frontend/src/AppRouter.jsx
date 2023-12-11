@@ -40,6 +40,14 @@ const AppRouter = () => {
     email: '',
     tel1: '',
     tel2: '',
+    occupationType: '',
+    numberOfOccupants: 1,
+    constructionYear: 0,
+    surfaceAuSol: 0,
+    surfaceHabitable: 0,
+    numberOfRooms: 1,
+    houseShape: '',
+    numberOfLevels: '',
   });
 
   //Context]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]

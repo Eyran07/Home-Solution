@@ -32,6 +32,43 @@ const ClientInfo = ({ onSubmit }) => {
 
   const [value, setValue] = React.useState("1");
 
+  const handleOccupationChange = (nextValue) => {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      occupationType: nextValue,
+    }));
+  };
+  const handleNumberOfOccupantsChange = (newCount) => {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      numberOfOccupants: newCount,
+    }));
+  };
+  const handleConstructionYearChange = (valueAsString, valueAsNumber) => {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      constructionYear: valueAsNumber,
+    }));
+  };
+  const handleSurfaceChange = (name, valueAsNumber) => {
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: valueAsNumber,
+    }));
+  };
+  const handleNumberOfRoomsChange = (newCount) => {
+    setFormData(prevFormData => ({
+      ...prevFormData,
+      numberOfRooms: newCount
+    }));
+  };
+  const handleRadioChange = (name, value) => {
+    setFormData(prevFormData => ({
+      ...prevFormData,
+      [name]: value
+    }));
+  };
+
   const handleSubmit = (event) => {
     event.preventDefault();
     onSubmit(formData);
@@ -130,18 +167,24 @@ const ClientInfo = ({ onSubmit }) => {
           <Heading size={"mg"} color={"gray"}>
             STATUT D’OCCUPATION
           </Heading>
-          <RadioGroup onChange={setValue} value={value}>
+          <RadioGroup
+            name="occupationType"
+            onChange={handleOccupationChange}
+            value={formData.occupationType}
+          >
             <Stack direction="row">
-              <Radio value="1">Propriétaire occupant</Radio>
-              <Radio value="2">Propriétaire d'une residence secondaire </Radio>
-              <Radio value="3">Propriétaire bailleur</Radio>
-              <Radio value="4">Locataire</Radio>
+              <Radio value="Propriétaire occupant">Propriétaire occupant</Radio>
+              <Radio value="Propriétaire d'une résidence secondaire">
+                Propriétaire d'une résidence secondaire
+              </Radio>
+              <Radio value="Propriétaire bailleur">Propriétaire bailleur</Radio>
+              <Radio value="Locataire">Locataire</Radio>
             </Stack>
           </RadioGroup>
           <Heading size={"mg"} color={"gray"}>
             NOMBRE D’OCCUPANTS
           </Heading>
-          <Counter />
+          <Counter onCountChange={handleNumberOfOccupantsChange} />
           <Box
             display={"flex"}
             color={"white"}
@@ -155,8 +198,11 @@ const ClientInfo = ({ onSubmit }) => {
           <Heading size={"mg"} color={"gray"}>
             ANNÉE DE CONSTRUCTION
           </Heading>
-          <NumberInput width="140px"
-         >
+          <NumberInput
+            width="140px"
+            onChange={handleConstructionYearChange}
+            value={formData.constructionYear}
+          >
             <NumberInputField />
             <NumberInputStepper>
               <NumberIncrementStepper />
@@ -169,10 +215,18 @@ const ClientInfo = ({ onSubmit }) => {
               alignItems={"center"}
               flexDirection={"column"}
             >
-              <Heading size={"mg"} color={"gray"}>
+              <Heading size="mg" color="gray">
                 SURFACE AU SOL (M2)
-              </Heading>{" "}
-              <NumberInput width="140px" mt={"20px"}>
+              </Heading>
+              <NumberInput
+                name="surfaceAuSol"
+                width="140px"
+                mt={"20px"}
+                onChange={(valueAsString, valueAsNumber) =>
+                  handleSurfaceChange("surfaceAuSol", valueAsNumber)
+                }
+                value={formData.surfaceAuSol}
+              >
                 <NumberInputField />
                 <NumberInputStepper>
                   <NumberIncrementStepper />
@@ -181,28 +235,47 @@ const ClientInfo = ({ onSubmit }) => {
               </NumberInput>
             </Box>
 
-            <Box
-              display={"flex"}
-              alignItems={"center"}
-              ml={"70px"}
-              flexDirection={"column"}
-            >
-              <Heading size={"mg"} color={"gray"}>
-                SURFACE HABITABLE (M2)
-              </Heading>
-              <NumberInput width="140px" mt={"20px"}>
-                <NumberInputField />
-                <NumberInputStepper>
-                  <NumberIncrementStepper />
-                  <NumberDecrementStepper />
-                </NumberInputStepper>
-              </NumberInput>
-            </Box>
-          </Box>
+            <Box display={"flex"} alignItems={"center"} ml={"70px"} flexDirection={"column"}>
+          <Heading size="mg" color="gray">
+            SURFACE HABITABLE (M2)
+          </Heading>
+          <NumberInput name="surfaceHabitable" width="140px" mt={"20px"} onChange={(valueAsString, valueAsNumber) => handleSurfaceChange('surfaceHabitable', valueAsNumber)} value={formData.surfaceHabitable}>
+            <NumberInputField />
+            <NumberInputStepper>
+              <NumberIncrementStepper />
+              <NumberDecrementStepper />
+            </NumberInputStepper>
+          </NumberInput>
+        </Box>
+      </Box>
           <Heading size={"mg"} color={"gray"}>
             NOMBRE DE PIÈCES
           </Heading>
-          <Counter />
+          <Counter onCountChange={handleNumberOfRoomsChange} currentCount={formData.numberOfRooms} />
+          <Heading size={"mg"} color={"gray"}>
+            POSITIONNEMENT DE LA MAISON
+          </Heading>
+          <Heading size="mg" color="gray">
+        FORME DE LA MAISON
+      </Heading>
+      <RadioGroup name="houseShape" onChange={(value) => handleRadioChange('houseShape', value)} value={formData.houseShape}>
+        <Stack direction="row">
+          <Radio value="Carrée">Carrée</Radio>
+          <Radio value="Allongée">Allongée</Radio>
+          <Radio value="Développée">Développée</Radio>
+        </Stack>
+      </RadioGroup>
+      
+      <Heading size="mg" color="gray">
+        NOMBRE DE NIVEAUX HABITABLES (HORS COMBLES)
+      </Heading>
+      <RadioGroup name="numberOfLevels" onChange={(value) => handleRadioChange('numberOfLevels', value)} value={formData.numberOfLevels}>
+        <Stack direction="row">
+          <Radio value="1">1</Radio>
+          <Radio value="2">2</Radio>
+          <Radio value="3">3</Radio>
+        </Stack>
+      </RadioGroup>
           <Button colorScheme="blue" type="submit">
             Valider
           </Button>
