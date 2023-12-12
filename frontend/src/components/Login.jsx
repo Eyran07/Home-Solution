@@ -20,7 +20,7 @@ const PasswordPrompt = ({ onPasswordSubmit }) => {
 
   const handleSubmit = () => {
     axios
-      .post(`${process.env.REACT_APP_SERVER_URL}/login`, formData)
+      .post(`${process.env.REACT_APP_SERVER_URL}login`, formData)
       .then((response) => {
         console.log(response);
         console.log("API Response:", response.data);
