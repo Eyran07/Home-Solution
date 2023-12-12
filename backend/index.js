@@ -6,15 +6,9 @@ const userRoutes = require('./routes/user');
 const app = express();
 
 // Middleware
-app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
-  );
-  next();
-});
+app.use(cors({
+  origin: 'https://home-solution.vercel.app'
+}));
 app.use(express.json()); // Pour parser le JSON
 app.use('/', userRoutes);
 
