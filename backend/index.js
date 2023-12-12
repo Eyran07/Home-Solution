@@ -29,8 +29,6 @@ app.get('/', (req, res) => {
   res.send('Serveur Home Solution en fonctionnement');
 });
 
-// Démarrer le serveur
-const PORT = process.env.PORT || 6060;
-app.listen(PORT, () => {
-  console.log(`Serveur démarré sur le port ${PORT}`);
+app.listen(6060, () => {
+  console.log("Server listening on port 6060");
 });
