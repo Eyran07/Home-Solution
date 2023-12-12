@@ -1,37 +1,34 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const cors = require('cors');
 require('dotenv').config();
 const userRoutes = require('./routes/user');
 
 const app = express();
 
-// Use cors middleware for handling CORS
-app.use(cors({
-  // Specify the origin of your frontend application
-  origin: 'https://home-solution.vercel.app'
-  // Alternatively, use '*' to allow all origins (not recommended for production)
-  // origin: '*'
-}));
-
-// Middleware for parsing JSON bodies
-app.use(express.json());
-
-// User routes
+// Middleware
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
+  res.header(
+    "Access-Control-Allow-Headers",
+    "Origin, X-Requested-With, Content-Type, Accept, Authorization"
+  );
+  next();
+});
+app.use(express.json()); // Pour parser le JSON
 app.use('/', userRoutes);
 
-// Connection to MongoDB
-mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log('Connected to MongoDB'))
-  .catch(err => console.error('Error connecting to MongoDB', err));
 
-// Root Route
+// Connection à MongoDB
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
+  .then(() => console.log('Connecté à MongoDB'))
+  .catch(err => console.error('Erreur de connexion à MongoDB', err));
+
+// Routes
 app.get('/', (req, res) => {
-  res.send('Home Solution Server Running');
+  res.send('Serveur Home Solution en fonctionnement');
 });
 
-// Start the server
-const PORT = process.env.PORT || 6060;
-app.listen(PORT, () => {
-  console.log(`Server started on port ${PORT}`);
+app.listen(6060, () => {
+  console.log("Server listening on port 6060");
 });
