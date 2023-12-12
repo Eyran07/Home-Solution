@@ -17,7 +17,7 @@ app.use((req, res, next) => {
 });
 app.use(express.json()); // Pour parser le JSON
 app.use('/', userRoutes);
-
+app.use(cors())
 
 // Connection à MongoDB
 mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
