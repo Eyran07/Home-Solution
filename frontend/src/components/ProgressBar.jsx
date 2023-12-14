@@ -8,14 +8,14 @@ const ProgressBar = ({ sections, currentSection }) => {
       justify="center"
       align="center"
       mb={4}
-      width="full" // Take full width of the container
-      px="10%" // Equivalent to start at 10% and end at 10%, thus the inner content is from 30% to 90%
+      width="full"
+      px="10%"
     >
       {sections.map((section, index) => (
         <Flex key={section} direction="column" align="center" flex="1">
           <Box
             width="100%"
-            maxWidth={{ base: "60%", md: "full" }} // Adjust based on responsive design
+            maxWidth={{ base: "60%", md: "full" }}
             height="4px"
             bg={index <= currentSection ? "blue.500" : "gray.200"}
             transition="background-color 0.3s"
