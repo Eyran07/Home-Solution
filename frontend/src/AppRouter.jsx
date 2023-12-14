@@ -46,6 +46,7 @@ const AppRouter = () => {
     surfaceAuSol: 0,
     surfaceHabitable: 0,
     numberOfRooms: 1,
+    housePosition:'',
     houseShape: '',
     numberOfLevels: '',
   });

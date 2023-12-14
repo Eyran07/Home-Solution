@@ -8,8 +8,10 @@ import {
   Box,
   Stack,
   Radio,
+  Image,
   RadioGroup,
   Heading,
+  useRadioGroup,
   NumberInput,
   NumberInputField,
   NumberInputStepper,
@@ -17,7 +19,27 @@ import {
   NumberDecrementStepper,
 } from "@chakra-ui/react";
 import { HomeContext } from "../../context/HomeContext";
+import RadioCard from "../layouts/RadioCard";
+import IconCard from "../layouts/IconCard";
 import Counter from "../../assets/Counter";
+import Picto1 from "../../assets/picto-client-info/statut-d’occupation/Picto-1.png";
+import Picto2 from "../../assets/picto-client-info/statut-d’occupation/Picto-2.png";
+import Picto3 from "../../assets/picto-client-info/statut-d’occupation/Picto-3.png";
+import Picto4 from "../../assets/picto-client-info/statut-d’occupation/Picto-4.png";
+import PictoOccupation from "../../assets/picto-client-info/Nombre d’occupants/Picto-1.png";
+import PictoConstruction from "../../assets/picto-client-info/année de construction/Picto-1.png";
+import PictoSol from "../../assets/picto-client-info/surface au sol/Picto-1.png";
+import PictoHabitable from "../../assets/picto-client-info/surface habitable/Picto-1.png";
+import PictoPieces from "../../assets/picto-client-info/nombre de pièces/Picto-1.png";
+import PictoPosition1 from "../../assets/picto-client-info/positionnement de la maison/Picto-1.png";
+import PictoPosition2 from "../../assets/picto-client-info/positionnement de la maison/Picto-2.png";
+import PictoPosition3 from "../../assets/picto-client-info/positionnement de la maison/Picto-3.png";
+import PictoMaison1 from "../../assets/picto-client-info/forme de la maison/Picto-1.png";
+import PictoMaison2 from "../../assets/picto-client-info/forme de la maison/Picto-2.png";
+import PictoMaison3 from "../../assets/picto-client-info/forme de la maison/Picto-3.png";
+import PictoHabitables1 from "../../assets/picto-client-info/nombre de niveaux habitables/Picto-1.png";
+import PictoHabitables2 from "../../assets/picto-client-info/nombre de niveaux habitables/Picto-2.png";
+import PictoHabitables3 from "../../assets/picto-client-info/nombre de niveaux habitables/Picto-3.png";
 
 const ClientInfo = ({ onSubmit }) => {
   const [formData, setFormData] = useContext(HomeContext);
@@ -30,16 +52,81 @@ const ClientInfo = ({ onSubmit }) => {
     }));
   };
 
-  const [value, setValue] = React.useState("1");
-
-  //test
-
   const handleOccupationChange = (nextValue) => {
     setFormData((prevFormData) => ({
       ...prevFormData,
       occupationType: nextValue,
     }));
   };
+  const optionsOccupation = [
+    {
+      label: "Propriétaire occupant",
+      value: "Propriétaire occupant",
+      icon: Picto1,
+    },
+    {
+      label: "Propriétaire d'une résidence secondaire",
+      value: "Propriétaire d'une résidence secondaire",
+      icon: Picto2,
+    },
+    {
+      label: "Propriétaire bailleur",
+      value: "Propriétaire bailleur",
+      icon: Picto3,
+    },
+    { label: "Locataire", value: "Locataire", icon: Picto4 },
+  ];
+
+  const housePositionOptions = [
+    { label: "1", value: "1", icon: PictoPosition1 },
+    { label: "2", value: "2", icon: PictoPosition2 },
+    { label: "3", value: "3", icon: PictoPosition3 },
+  ];
+
+  const houseShapeOptions = [
+    { label: "Carrée", value: "Carrée", icon: PictoMaison1 },
+    { label: "Allongée", value: "Allongée", icon: PictoMaison2 },
+    { label: "Développée", value: "Développée", icon: PictoMaison3 },
+  ];
+
+  const numberOfLevelsOptions = [
+    { label: "1", value: "1", icon: PictoHabitables1 },
+    { label: "2", value: "2", icon: PictoHabitables2 },
+    { label: "3", value: "3", icon: PictoHabitables3 },
+  ];
+  const {
+    getRootProps: occupationGroupProps,
+    getRadioProps: occupationRadioProps,
+  } = useRadioGroup({
+    name: "occupationType",
+    defaultValue: "",
+    onChange: handleOccupationChange,
+  });
+  const {
+    getRootProps: houseShapeGroupProps,
+    getRadioProps: houseShapeRadioProps,
+  } = useRadioGroup({
+    name: "houseShape",
+    defaultValue: "",
+    onChange: (value) => handleRadioChange("houseShape", value),
+  });
+  const {
+    getRootProps: housePositionGroupProps,
+    getRadioProps: housePositionRadioProps,
+  } = useRadioGroup({
+    name: "housePosition",
+    defaultValue: "",
+    onChange: (value) => handleRadioChange("housePosition", value),
+  });
+  const {
+    getRootProps: numberOfLevelsGroupProps,
+    getRadioProps: numberOfLevelsRadioProps,
+  } = useRadioGroup({
+    name: "numberOfLevels",
+    defaultValue: "",
+    onChange: (value) => handleRadioChange("numberOfLevels", value),
+  });
+
   const handleNumberOfOccupantsChange = (newCount) => {
     setFormData((prevFormData) => ({
       ...prevFormData,
@@ -59,15 +146,15 @@ const ClientInfo = ({ onSubmit }) => {
     }));
   };
   const handleNumberOfRoomsChange = (newCount) => {
-    setFormData(prevFormData => ({
+    setFormData((prevFormData) => ({
       ...prevFormData,
-      numberOfRooms: newCount
+      numberOfRooms: newCount,
     }));
   };
   const handleRadioChange = (name, value) => {
-    setFormData(prevFormData => ({
+    setFormData((prevFormData) => ({
       ...prevFormData,
-      [name]: value
+      [name]: value,
     }));
   };
 
@@ -166,26 +253,24 @@ const ClientInfo = ({ onSubmit }) => {
           >
             <Heading size={"lg"}>TYPE D'OCCUPATION</Heading>
           </Box>
-          <Heading size={"mg"} color={"gray"}>
+          <Heading size="mg" color="gray">
             STATUT D’OCCUPATION
           </Heading>
-          <RadioGroup
-            name="occupationType"
-            onChange={handleOccupationChange}
-            value={formData.occupationType}
-          >
-            <Stack direction="row">
-              <Radio value="Propriétaire occupant">Propriétaire occupant</Radio>
-              <Radio value="Propriétaire d'une résidence secondaire">
-                Propriétaire d'une résidence secondaire
-              </Radio>
-              <Radio value="Propriétaire bailleur">Propriétaire bailleur</Radio>
-              <Radio value="Locataire">Locataire</Radio>
-            </Stack>
-          </RadioGroup>
+          <Stack {...occupationGroupProps()} direction="row">
+            {optionsOccupation.map((option) => (
+              <RadioCard
+                key={option.value}
+                {...occupationRadioProps({ value: option.value })}
+                icon={option.icon}
+              >
+                {option.label}
+              </RadioCard>
+            ))}
+          </Stack>
           <Heading size={"mg"} color={"gray"}>
             NOMBRE D’OCCUPANTS
           </Heading>
+          <IconCard icon={PictoOccupation} />
           <Counter onCountChange={handleNumberOfOccupantsChange} />
           <Box
             display={"flex"}
@@ -200,6 +285,7 @@ const ClientInfo = ({ onSubmit }) => {
           <Heading size={"mg"} color={"gray"}>
             ANNÉE DE CONSTRUCTION
           </Heading>
+          <IconCard icon={PictoConstruction} />
           <NumberInput
             width="140px"
             onChange={handleConstructionYearChange}
@@ -220,6 +306,8 @@ const ClientInfo = ({ onSubmit }) => {
               <Heading size="mg" color="gray">
                 SURFACE AU SOL (M2)
               </Heading>
+              <IconCard icon={PictoSol} />
+
               <NumberInput
                 name="surfaceAuSol"
                 width="140px"
@@ -237,47 +325,86 @@ const ClientInfo = ({ onSubmit }) => {
               </NumberInput>
             </Box>
 
-            <Box display={"flex"} alignItems={"center"} ml={"70px"} flexDirection={"column"}>
-          <Heading size="mg" color="gray">
-            SURFACE HABITABLE (M2)
-          </Heading>
-          <NumberInput name="surfaceHabitable" width="140px" mt={"20px"} onChange={(valueAsString, valueAsNumber) => handleSurfaceChange('surfaceHabitable', valueAsNumber)} value={formData.surfaceHabitable}>
-            <NumberInputField />
-            <NumberInputStepper>
-              <NumberIncrementStepper />
-              <NumberDecrementStepper />
-            </NumberInputStepper>
-          </NumberInput>
-        </Box>
-      </Box>
+            <Box
+              display={"flex"}
+              alignItems={"center"}
+              ml={"70px"}
+              flexDirection={"column"}
+            >
+              <Heading size="mg" color="gray">
+                SURFACE HABITABLE (M2)
+              </Heading>
+              <IconCard icon={PictoHabitable} />
+
+              <NumberInput
+                name="surfaceHabitable"
+                width="140px"
+                mt={"20px"}
+                onChange={(valueAsString, valueAsNumber) =>
+                  handleSurfaceChange("surfaceHabitable", valueAsNumber)
+                }
+                value={formData.surfaceHabitable}
+              >
+                <NumberInputField />
+                <NumberInputStepper>
+                  <NumberIncrementStepper />
+                  <NumberDecrementStepper />
+                </NumberInputStepper>
+              </NumberInput>
+            </Box>
+          </Box>
           <Heading size={"mg"} color={"gray"}>
             NOMBRE DE PIÈCES
           </Heading>
-          <Counter onCountChange={handleNumberOfRoomsChange} currentCount={formData.numberOfRooms} />
+          <IconCard icon={PictoPieces} />
+
+          <Counter
+            onCountChange={handleNumberOfRoomsChange}
+            currentCount={formData.numberOfRooms}
+          />
           <Heading size={"mg"} color={"gray"}>
             POSITIONNEMENT DE LA MAISON
           </Heading>
+          <Stack {...housePositionGroupProps()} direction="row">
+            {housePositionOptions.map((option) => (
+              <RadioCard
+                key={option.value}
+                {...housePositionRadioProps({ value: option.value })}
+                icon={option.icon}
+              >
+                {option.label}
+              </RadioCard>
+            ))}
+          </Stack>
           <Heading size="mg" color="gray">
-        FORME DE LA MAISON
-      </Heading>
-      <RadioGroup name="houseShape" onChange={(value) => handleRadioChange('houseShape', value)} value={formData.houseShape}>
-        <Stack direction="row">
-          <Radio value="Carrée">Carrée</Radio>
-          <Radio value="Allongée">Allongée</Radio>
-          <Radio value="Développée">Développée</Radio>
-        </Stack>
-      </RadioGroup>
-      
-      <Heading size="mg" color="gray">
-        NOMBRE DE NIVEAUX HABITABLES (HORS COMBLES)
-      </Heading>
-      <RadioGroup name="numberOfLevels" onChange={(value) => handleRadioChange('numberOfLevels', value)} value={formData.numberOfLevels}>
-        <Stack direction="row">
-          <Radio value="1">1</Radio>
-          <Radio value="2">2</Radio>
-          <Radio value="3">3</Radio>
-        </Stack>
-      </RadioGroup>
+            FORME DE LA MAISON
+          </Heading>
+          <Stack {...houseShapeGroupProps()} direction="row">
+            {houseShapeOptions.map((option) => (
+              <RadioCard
+                key={option.value}
+                {...houseShapeRadioProps({ value: option.value })}
+                icon={option.icon}
+              >
+                {option.label}
+              </RadioCard>
+            ))}
+          </Stack>
+
+          <Heading size="mg" color="gray">
+            NOMBRE DE NIVEAUX HABITABLES (HORS COMBLES)
+          </Heading>
+          <Stack {...numberOfLevelsGroupProps()} direction="row">
+            {numberOfLevelsOptions.map((option) => (
+              <RadioCard
+                key={option.value}
+                {...numberOfLevelsRadioProps({ value: option.value })}
+                icon={option.icon}
+              >
+                {option.label}
+              </RadioCard>
+            ))}
+          </Stack>
           <Button colorScheme="blue" type="submit">
             Valider
           </Button>
