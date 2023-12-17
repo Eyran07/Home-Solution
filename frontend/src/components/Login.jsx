@@ -86,7 +86,7 @@ const PasswordPrompt = ({ onPasswordSubmit }) => {
           <Text position="absolute" left="0" top="-20px" color="white">Mot de passe</Text>
         </Box>
 
-        <Button colorScheme="blue" onClick={handleSubmit} width="full">
+        <Button colorScheme="#a5bbd4" onClick={handleSubmit} width="full">
           Connexion
         </Button>
       </VStack>

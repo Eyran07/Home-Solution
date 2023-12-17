@@ -13,8 +13,9 @@ import {
   Box,
   Heading,
   Switch,
-  HStack
+  HStack,
 } from "@chakra-ui/react";
+import backHome from "../assets/backHome.png";
 
 const Admin = () => {
   const [users, setUsers] = useState([]);
@@ -68,7 +69,10 @@ const Admin = () => {
         });
     } else {
       axios
-        .put(`${process.env.REACT_APP_SERVER_URL}/users/${editingUserId}`, editedUser)
+        .put(
+          `${process.env.REACT_APP_SERVER_URL}/users/${editingUserId}`,
+          editedUser
+        )
         .then((response) => {
           fetchUsers();
           cancelEdit();
@@ -106,67 +110,115 @@ const Admin = () => {
 
   return (
     <>
- <Box
-  display={'flex'}
-  flexDirection="column"
-  justifyContent={'center'}
-  alignContent={'center'}
-  overflowY="auto"
-  mt={'100px'}
-  bg="white" // White background for the main box
-  p={4}
-  borderRadius="md"
->
-  <Heading mb={6} color="black">
-    Gestion des Utilisateurs
-  </Heading>
+      <Box
+      display="flex"
+      flexDirection="column"
+      alignItems="center"
+      justifyContent="center"
+      backgroundImage={`url(${backHome})`}
+      backgroundSize="cover" // Ajustez selon vos besoins
+      bgPosition="center"
+      bgRepeat="no-repeat"
+      bgSize="cover"
+      >
+        <Heading mb={6} color="black">
+          Gestion des Utilisateurs
+        </Heading>
 
-  <TableContainer>
-    <Table variant="simple" size="md" style={{ tableLayout: 'fixed' }}>
-      <Thead bgColor="gray.200">
-        <Tr>
-          <Th style={{ width: '25%' }}>Nom</Th>
-          <Th style={{ width: '25%' }}>Mot de passe</Th>
-          <Th style={{ width: '25%' }}>Admin</Th>
-          <Th style={{ width: '25%' }}>Actions</Th>
-        </Tr>
-      </Thead>
-      <Tbody>
-        {users.map((user) => (
-          <Tr key={user._id}>
-            {editingUserId === user._id ? (
-              <>
-                <Td>
-                  <Input value={editedUser.name} onChange={(e) => setEditedUser({...editedUser, name: e.target.value})} />
-                </Td>
-                <Td>
-                  <Input value={editedUser.password} onChange={(e) => setEditedUser({...editedUser, password: e.target.value})} />
-                </Td>
-                <Td>
-                  <Switch isChecked={editedUser.admin} onChange={(e) => setEditedUser({...editedUser, admin: e.target.checked})} />
-                </Td>
-                <Td>
-                  <HStack spacing={2}>
-                    <Button size="sm" colorScheme="blue" onClick={() => saveEdit()}>Valider</Button>
-                    <Button size="sm" colorScheme="red" onClick={() => deleteUser(editingUserId)}>Supprimer</Button>
-                    <Button size="sm" colorScheme="gray" onClick={cancelEdit}>Annuler</Button>
-                  </HStack>
-                </Td>
-              </>
-            ) : (
-              <>
-                <Td>{user.name}</Td>
-                <Td>{user.password}</Td>
-                <Td>
-                  <Switch isChecked={user.admin} isReadOnly />
-                </Td>
-                <Td>
-                  <Button size="sm" colorScheme="green" onClick={() => startEdit(user)}>Modifier</Button>
-                </Td>
-              </>
-            )}
-          </Tr>
-        ))}
+        <TableContainer>
+          <Table variant="simple" size="md" style={{ tableLayout: "fixed" }}>
+            <Thead bgColor="gray.200">
+              <Tr>
+                <Th style={{ width: "25%" }}>Nom</Th>
+                <Th style={{ width: "25%" }}>Mot de passe</Th>
+                <Th style={{ width: "25%" }}>Admin</Th>
+                <Th style={{ width: "25%" }}>Actions</Th>
+              </Tr>
+            </Thead>
+            <Tbody>
+              {users.map((user) => (
+                <Tr key={user._id}>
+                  {editingUserId === user._id ? (
+                    <>
+                      <Td>
+                        <Input
+                          value={editedUser.name}
+                          onChange={(e) =>
+                            setEditedUser({
+                              ...editedUser,
+                              name: e.target.value,
+                            })
+                          }
+                        />
+                      </Td>
+                      <Td>
+                        <Input
+                          value={editedUser.password}
+                          onChange={(e) =>
+                            setEditedUser({
+                              ...editedUser,
+                              password: e.target.value,
+                            })
+                          }
+                        />
+                      </Td>
+                      <Td>
+                        <Switch
+                          isChecked={editedUser.admin}
+                          onChange={(e) =>
+                            setEditedUser({
+                              ...editedUser,
+                              admin: e.target.checked,
+                            })
+                          }
+                        />
+                      </Td>
+                      <Td>
+                        <HStack spacing={2}>
+                          <Button
+                            size="sm"
+                            colorScheme="blue"
+                            onClick={() => saveEdit()}
+                          >
+                            Valider
+                          </Button>
+                          <Button
+                            size="sm"
+                            colorScheme="red"
+                            onClick={() => deleteUser(editingUserId)}
+                          >
+                            Supprimer
+                          </Button>
+                          <Button
+                            size="sm"
+                            colorScheme="gray"
+                            onClick={cancelEdit}
+                          >
+                            Annuler
+                          </Button>
+                        </HStack>
+                      </Td>
+                    </>
+                  ) : (
+                    <>
+                      <Td>{user.name}</Td>
+                      <Td>{user.password}</Td>
+                      <Td>
+                        <Switch isChecked={user.admin} isReadOnly />
+                      </Td>
+                      <Td>
+                        <Button
+                          size="sm"
+                          colorScheme="green"
+                          onClick={() => startEdit(user)}
+                        >
+                          Modifier
+                        </Button>
+                      </Td>
+                    </>
+                  )}
+                </Tr>
+              ))}
               {addingNew && (
                 <Tr>
                   <Td>

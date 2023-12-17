@@ -9,7 +9,7 @@ const IconCard = ({ icon, label }) => {
         borderWidth="1.6px"
         borderRadius="20px"
         boxShadow="md"
-        borderColor={'gray.500'}
+        borderColor={'#a5bbd4'}
         p={3}
         display="flex"
         flexDirection="column"
@@ -18,7 +18,7 @@ const IconCard = ({ icon, label }) => {
       >
         <Image src={icon} boxSize="90px" />
       </Box>
-      <Text fontSize="sm" mt={2} color="gray.800">{label}</Text>
+      <Text fontSize="sm" mt={2} color="#a5bbd4">{label}</Text>
     </Box>
   );
 };

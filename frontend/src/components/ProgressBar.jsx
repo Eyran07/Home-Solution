@@ -17,11 +17,11 @@ const ProgressBar = ({ sections, currentSection }) => {
             width="100%"
             maxWidth={{ base: "60%", md: "full" }}
             height="4px"
-            bg={index <= currentSection ? "blue.500" : "gray.200"}
+            bg={index <= currentSection ? "#a5bbd4" : "gray.200"}
             transition="background-color 0.3s"
           />
           <Text
-            color={index <= currentSection ? "blue.500" : "gray.500"}
+            color={index <= currentSection ? "#a5bbd4" : "gray.500"}
             fontSize="sm"
             mt={2}
           >

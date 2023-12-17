@@ -22,6 +22,7 @@ import { HomeContext } from "../../context/HomeContext";
 import RadioCard from "../layouts/RadioCard";
 import IconCard from "../layouts/IconCard";
 import Counter from "../../assets/Counter";
+import happy from '../../assets/happy.png';
 import Picto1 from "../../assets/picto-client-info/statut-d’occupation/Picto-1.png";
 import Picto2 from "../../assets/picto-client-info/statut-d’occupation/Picto-2.png";
 import Picto3 from "../../assets/picto-client-info/statut-d’occupation/Picto-3.png";
@@ -171,16 +172,17 @@ const ClientInfo = ({ onSubmit }) => {
         display={"flex"}
         alignItems={"center"}
         justifyContent={"center"}
-        backgroundColor={"blue.100"} // Adjust the color to match your theme or design
-        p={5}
+        backgroundImage={`url(${happy})`}
+        backgroundSize="cover" // Ajustez selon vos besoins
+        p={'58px'}
         width="full"
       >
-        <VStack spacing={4} width="60%">
+        <VStack  spacing={4} width="60%">
           {" "}
           {/* Adjust the width as per your design */}
-          <FormControl>
+          <FormControl >
             <Select
-              placeholder="Sélectionnez une option"
+              // placeholder="Sélectionnez une option"
               name="title"
               onChange={handleChange}
             >
@@ -248,12 +250,12 @@ const ClientInfo = ({ onSubmit }) => {
             color={"white"}
             w={"550px"}
             justifyContent={"center"}
-            bgColor={"green.500"}
+            bgColor={"#15af97"}
             borderRadius={"25px"}
           >
             <Heading size={"lg"}>TYPE D'OCCUPATION</Heading>
           </Box>
-          <Heading size="mg" color="gray">
+          <Heading size="mg" color="#a5bbd4">
             STATUT D’OCCUPATION
           </Heading>
           <Stack {...occupationGroupProps()} direction="row">
@@ -267,7 +269,7 @@ const ClientInfo = ({ onSubmit }) => {
               </RadioCard>
             ))}
           </Stack>
-          <Heading size={"mg"} color={"gray"}>
+          <Heading size={"mg"} color={"#a5bbd4"}>
             NOMBRE D’OCCUPANTS
           </Heading>
           <IconCard icon={PictoOccupation} />
@@ -277,12 +279,12 @@ const ClientInfo = ({ onSubmit }) => {
             color={"white"}
             w={"550px"}
             justifyContent={"center"}
-            bgColor={"green.500"}
+            bgColor={"#15af97"}
             borderRadius={"25px"}
           >
             <Heading size={"lg"}>ARCHITECTURE DE LA MAISON</Heading>
           </Box>
-          <Heading size={"mg"} color={"gray"}>
+          <Heading size={"mg"} color={"#a5bbd4"}>
             ANNÉE DE CONSTRUCTION
           </Heading>
           <IconCard icon={PictoConstruction} />
@@ -303,7 +305,7 @@ const ClientInfo = ({ onSubmit }) => {
               alignItems={"center"}
               flexDirection={"column"}
             >
-              <Heading size="mg" color="gray">
+              <Heading size="mg" color="#a5bbd4">
                 SURFACE AU SOL (M2)
               </Heading>
               <IconCard icon={PictoSol} />
@@ -331,7 +333,7 @@ const ClientInfo = ({ onSubmit }) => {
               ml={"70px"}
               flexDirection={"column"}
             >
-              <Heading size="mg" color="gray">
+              <Heading size="mg" color="#a5bbd4">
                 SURFACE HABITABLE (M2)
               </Heading>
               <IconCard icon={PictoHabitable} />
@@ -353,7 +355,7 @@ const ClientInfo = ({ onSubmit }) => {
               </NumberInput>
             </Box>
           </Box>
-          <Heading size={"mg"} color={"gray"}>
+          <Heading size={"mg"} color={"#a5bbd4"}>
             NOMBRE DE PIÈCES
           </Heading>
           <IconCard icon={PictoPieces} />
@@ -362,7 +364,7 @@ const ClientInfo = ({ onSubmit }) => {
             onCountChange={handleNumberOfRoomsChange}
             currentCount={formData.numberOfRooms}
           />
-          <Heading size={"mg"} color={"gray"}>
+          <Heading size={"mg"} color={"#a5bbd4"}>
             POSITIONNEMENT DE LA MAISON
           </Heading>
           <Stack {...housePositionGroupProps()} direction="row">
@@ -376,7 +378,7 @@ const ClientInfo = ({ onSubmit }) => {
               </RadioCard>
             ))}
           </Stack>
-          <Heading size="mg" color="gray">
+          <Heading size="mg" color="#a5bbd4">
             FORME DE LA MAISON
           </Heading>
           <Stack {...houseShapeGroupProps()} direction="row">
@@ -391,7 +393,7 @@ const ClientInfo = ({ onSubmit }) => {
             ))}
           </Stack>
 
-          <Heading size="mg" color="gray">
+          <Heading size="mg" color="#a5bbd4">
             NOMBRE DE NIVEAUX HABITABLES (HORS COMBLES)
           </Heading>
           <Stack {...numberOfLevelsGroupProps()} direction="row">

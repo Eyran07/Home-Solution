@@ -16,10 +16,10 @@ const RadioCard = (props) => {
         borderWidth="1.6px"
         borderRadius="20px"
         boxShadow="md"
-        borderColor={'gray.500'}
+        borderColor={'#a5bbd4'}
         _checked={{
-          bg: "green.500", // Couleur de fond lorsque l'option est sélectionnée
-          borderColor:'blue.500',
+          bg: "#15af97", // Couleur de fond lorsque l'option est sélectionnée
+          borderColor:'#a5bbd4',
         }}
         p={3}
         display="flex"
@@ -29,7 +29,7 @@ const RadioCard = (props) => {
       >
         <Image src={props.icon} boxSize="90px" />
       </Box>
-      <Text fontSize="sm" mt={2} color="gray.800">{props.children}</Text>
+      <Text fontSize="sm" mt={2} color="#a5bbd4">{props.children}</Text>
     </Box>
   );
 };

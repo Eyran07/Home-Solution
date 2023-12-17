@@ -38,7 +38,7 @@ const Counter = ({ onCountChange }) => {
             fontWeight="semibold"
             bg="#f5f6f7"
             borderColor="#ccd0d5"
-            _hover={{ bg: '#E1E5FC', color: 'blue' }}
+            _hover={{ bg: '#E1E5FC', color: '#a5bbd4' }}
             _active={{
                bg: '#dddfe2',
                transform: 'scale(0.98)',
@@ -66,7 +66,7 @@ const Counter = ({ onCountChange }) => {
             fontWeight="semibold"
             bg="#f5f6f7"
             borderColor="#ccd0d5"
-            _hover={{ bg: '#E1E5FC', color: 'blue' }}
+            _hover={{ bg: '#E1E5FC', color: '#a5bbd4' }}
             _active={{
                bg: '#E1E5FC',
                transform: 'scale(0.98)',

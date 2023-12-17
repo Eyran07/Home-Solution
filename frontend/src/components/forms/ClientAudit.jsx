@@ -12,7 +12,7 @@ const ClientAudit = ({ onSubmit }) => {
           <Input type="text" />
         </FormControl>
         // ... other form controls
-        <Button colorScheme="blue" type="submit">Submit</Button>
+        <Button colorScheme="#a5bbd4" type="submit">Submit</Button>
       </VStack>
     </form>
   );

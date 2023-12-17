@@ -1,6 +1,6 @@
 import React from 'react';
 import { Box, Button, Text, Image, Link } from "@chakra-ui/react";
-// import backgroundImage from "../assets/your-background-image.jpg"; // Replace with the path to your background image
+import backHome from '../assets/backHome.png';
 import logo from "../assets/logo.jpg"; // Replace with the path to your actual logo image
 // import book from "../assets/book.pdf"; // Replace with the path to your book file
 
@@ -12,7 +12,8 @@ const Home = () => {
       alignItems="center"
       justifyContent="center"
       height="100vh"
-      // bgImage={`url(${backgroundImage})`}
+      backgroundImage={`url(${backHome})`}
+      backgroundSize="cover" // Ajustez selon vos besoins
       bgPosition="center"
       bgRepeat="no-repeat"
       bgSize="cover"
