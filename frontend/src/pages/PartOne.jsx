@@ -9,15 +9,11 @@ const formSections = ['VOS INFORMATIONS', 'VOTRE AUDIT ÉNERGÉTIQUE', 'NOS SOLU
 
 const PartOne = () => {
   const navigate = useNavigate();
-  const currentSection = 0; // Index of the current section for the progress bar
+  const currentSection = 0;
 
   const handleFormSubmit = (formData) => {
-    // Form submission logic
-    // For example, send formData to the backend here
     console.log(formData);
-
-    // After form submission logic, navigate to the next part
-    navigate('/client-audit'); // Or '/client-audit' if that's the intended route
+    navigate('/client-audit');
   };
 
   return (

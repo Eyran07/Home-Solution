@@ -162,7 +162,6 @@ const ClientInfo = ({ onSubmit }) => {
   const handleSubmit = (event) => {
     event.preventDefault();
     onSubmit(formData);
-    // You may also want to include occupancyType and number of occupants in formData
     console.log(formData);
   };
 

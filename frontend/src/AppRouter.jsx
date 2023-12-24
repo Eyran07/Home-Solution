@@ -11,6 +11,7 @@ import PasswordPrompt from "./components/Login";
 import Admin from "./pages/Admin";
 import PartOne from "./pages/PartOne";
 import PartTwo from "./pages/PartTwo";
+import PartThree from "./pages/PartThree"
 
 const AppRouter = () => {
   const [hasAccess, setHasAccess] = useState(false);
@@ -49,6 +50,16 @@ const AppRouter = () => {
     housePosition:'',
     houseShape: '',
     numberOfLevels: '',
+    installationType: '',
+    protectionType: '',
+    ampouleType: '',
+    energieType:'',
+    sanitaireType: '',
+    stockageType: '',
+    useType: '',
+    sourceType:'',
+    chauffageType:'',
+    chauffagesType:'',
   });
 
   //Context]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
@@ -64,6 +75,7 @@ const AppRouter = () => {
               <Route path="/" element={<Home />} />
               <Route path="/client-info" element={<PartOne />} />
               <Route path="/client-audit" element={<PartTwo />} />
+              <Route path="/client-energetique" element={<PartThree />} />
               {adminAccess && <Route path="/admin" element={<Admin />} />}{" "}
               {/* Route Admin accessible seulement si adminAccess est true */}
               <Route path="*" element={<Navigate to="/" />} />{" "}
