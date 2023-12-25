@@ -52,37 +52,37 @@ const PasswordPrompt = ({ onPasswordSubmit }) => {
       <VStack
         spacing={4}
         p={8}
-        bg="transparent" // Changed to transparent to match your design
-        boxShadow="none" // Remove box shadow to match your design
+        bg="transparent" 
+        boxShadow="none" 
       >
         <Image src={logo} boxSize="150px" alt="Logo" />
 
-        <Box position="relative" height="50px" width="300px"> {/* Adjust size as needed */}
+        <Box position="relative" height="50px" width="300px"> 
           <Input
             placeholder="Identifiant"
             type="text"
             name="name"
             value={formData.name}
             onChange={handleChange}
-            size="lg" // Increase size to match design
-            bg="white" // White background for input
-            border="none" // No border
-            borderRadius="0" // Remove border radius to match design
+            size="lg"
+            bg="white" 
+            border="none" 
+            borderRadius="0" 
           />
           <Text position="absolute" left="0" top="-20px" color="white">Identifiant</Text>
         </Box>
 
-        <Box position="relative" height="50px" width="300px"> {/* Adjust size as needed */}
+        <Box position="relative" height="50px" width="300px"> 
           <Input
             placeholder="Mot de passe"
             type="password"
             name="password"
             value={formData.password}
             onChange={handleChange}
-            size="lg" // Increase size to match design
-            bg="white" // White background for input
-            border="none" // No border
-            borderRadius="0" // Remove border radius to match design
+            size="lg" 
+            bg="white" 
+            border="none" 
+            borderRadius="0" 
           />
           <Text position="absolute" left="0" top="-20px" color="white">Mot de passe</Text>
         </Box>
