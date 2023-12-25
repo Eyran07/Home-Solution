@@ -22,7 +22,7 @@ import { HomeContext } from "../../context/HomeContext";
 import RadioCard from "../layouts/RadioCard";
 import DisplayCost from "../../components/layouts/DisplayCost";
 import PictoInstallation1 from "../../assets/picto-audit/type d’installation électrique/Picto-1.png";
-import PictoInstallation2 from "../../assets/picto-audit/type d’installation électrique/Picto-2.png";
+import PictoInstallation2 from '../../assets/picto-audit/type d’installation électrique/Picto-2.png';
 import PictoProtection1 from "../../assets/picto-audit/sensibilité à l’environnement/Picto-1.png";
 import PictoProtection2 from "../../assets/picto-audit/sensibilité à l’environnement/Picto-2.png";
 import PictoProtection3 from "../../assets/picto-audit/sensibilité à l’environnement/Picto-3.png";
