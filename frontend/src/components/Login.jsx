@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Box, Input, Button, VStack, Image, Text } from "@chakra-ui/react";
 import axios from "axios";
-// import backgroundImage from "../assets/your-background-image.jpg"; // Replace with the path to your background image
 import logo from "../assets/logo.jpg"; // Make sure this is the logo you want to use
 import { useNavigate } from "react-router-dom";
+import backHome from '../assets/backHome.png';
+
 
 const PasswordPrompt = ({ onPasswordSubmit }) => {
   const [formData, setFormData] = useState({
@@ -43,7 +44,7 @@ const PasswordPrompt = ({ onPasswordSubmit }) => {
       alignItems="center"
       justifyContent="center"
       height="100vh"
-      // bgImage={`url(${backgroundImage})`}
+      backgroundImage={`url(${backHome})`}
       bgPosition="center"
       bgRepeat="no-repeat"
       bgSize="cover"
