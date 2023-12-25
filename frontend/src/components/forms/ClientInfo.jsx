@@ -182,7 +182,7 @@ const ClientInfo = ({ onSubmit }) => {
           <FormControl >
             <Select
               // placeholder="Sélectionnez une option"
-              name="title"
+              name="sexe"
               onChange={handleChange}
             >
               <option value="mr">Monsieur</option>

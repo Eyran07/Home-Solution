@@ -20,7 +20,7 @@ import {
 } from "@chakra-ui/react";
 import { HomeContext } from "../../context/HomeContext";
 import RadioCard from "../layouts/RadioCard";
-import DisplayCard from "../../components/layouts/DisplayCard";
+import DisplayCost from "../../components/layouts/DisplayCost";
 import PictoInstallation1 from "../../assets/picto-audit/type d’installation électrique/Picto-1.png";
 import PictoInstallation2 from "../../assets/picto-audit/type d’installation électrique/Picto-2.png";
 import PictoProtection1 from "../../assets/picto-audit/sensibilité à l’environnement/Picto-1.png";
@@ -744,17 +744,8 @@ const ClientAudit = ({ onSubmit }) => {
               </RadioCard>
             ))}
           </Stack>
-          <Box
-            display={"flex"}
-            color={"white"}
-            w={"750px"}
-            justifyContent={"center"}
-            bgColor={"#15af97"}
-            borderRadius={"25px"}
-          >
-            <Heading size={"lg"}> VOS CONSOMMATIONS POSTE PAR POSTE </Heading>
-          </Box>
-          <DisplayCard />
+         
+          <DisplayCost />
           <Button colorScheme="blue" type="submit">
             Valider
           </Button>

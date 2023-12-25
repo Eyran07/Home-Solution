@@ -31,7 +31,7 @@ const AppRouter = () => {
 
   //Context]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]]
   const [formData, setFormData] = useState({
-    title: '',
+    sexe: '',
     nom: '',
     prenom: '',
     adresse: '',
